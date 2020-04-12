@@ -1,0 +1,23 @@
+#配置jdbc
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://cn668.cn:3306/blog?characterEncoding=utf8&useSSL=false
+    username: blog
+    password: 123456
+    
+#热部署
+  thymeleaf: 
+    cache: true
+  devtools: 
+    restart: 
+      enabled: true
+      additional-paths: src/main/java 
+      
+#设置端口号
+server:  port: 80
+  
+#配置mybatis
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
