@@ -2,6 +2,7 @@ package cn.cn668.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,7 @@ public class UserController {
 	 * @param request
 	 * @return
 	 */
+	@RequiresPermissions("user:list")
 	@RequestMapping(value = "findUser")
 	public JSONObject findUser(HttpServletRequest request) {
 		
