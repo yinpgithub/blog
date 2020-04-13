@@ -11,4 +11,9 @@ public class MD5 {
 		String md5Pwd = new SimpleHash("MD5", pwd, ByteSource.Util.bytes(username + "cn668.cn"), 10).toHex();
 		return md5Pwd;
 	}
+	
+	public static void main(String[] args) {
+		
+		System.err.println(MD5Pwd("admin", "123456"));
+	}
 }

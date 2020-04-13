@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.cn668.dao.LoginDao;
 import cn.cn668.pojo.User;
+import cn.cn668.util.MD5;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,7 +42,7 @@ public class CustomRealm extends AuthorizingRealm {
 			throws AuthenticationException {
 		System.out.println("-------身份认证方法--------");
 		String userName = (String) authenticationToken.getPrincipal();
-		String userPwd = new String((char[]) authenticationToken.getCredentials());
+		String userPwd = MD5.MD5Pwd(userName,new String((char[]) authenticationToken.getCredentials()));
 		// 根据用户名从数据库获取密码
 		User user = dao.login(userName);
 		if (user == null) {
