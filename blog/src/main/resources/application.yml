@@ -15,7 +15,7 @@ spring:
       additional-paths: src/main/java 
       
 #设置端口号
-server:  port: 80
+server:  port: 8080
   
 #配置mybatis
 mybatis:

@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
+
 
 /**
  * 配置无权限提示
