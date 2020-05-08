@@ -20,4 +20,11 @@ public interface ContentsService {
 	 */
 	public List<Contents> findContentss(JSONObject json);
 	
+	/**
+	 * 查询内容
+	 * @param object
+	 * @return
+	 */
+	public Contents findContents(JSONObject json);
+	
 }

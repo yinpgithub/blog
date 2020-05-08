@@ -5,22 +5,29 @@
 <title>Insert title here</title>
 </head>
 <style>
-.contents{
+.contents {
 	border: 1px solid red;
+	margin: 20px;
 }
-.div1{
 
+.div1 {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 </style>
 <body>
-	<div th:each="contents:${contentss}" class="div1">
-		<div class="contents">
-			<h1>
-				<span>标题：</span><span th:text="${contents.title}"></span>
-			</h1>
-			<h1>
-				<span>发布日期：</span><span th:text="${contents.insertDt}"></span>
-			</h1>
+	<div class="div1">
+		<div th:each="contents:${contentss}" class="contents">
+			<a th:href="@{${contents.id}}+'.html'">
+				<h1>
+					<span>标题：</span><span th:text="${contents.title}"></span>
+				</h1>
+				<h1>
+					<span>发布日期：</span><span th:text="${contents.insertDt}"></span>
+				</h1>
+			</a>
 		</div>
 	</div>
 </body>

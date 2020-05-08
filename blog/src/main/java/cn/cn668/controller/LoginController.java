@@ -29,6 +29,11 @@ public class LoginController {
 	LoginService service;
 
 	JSONObject result = new JSONObject();
+	
+	@RequestMapping("login.html")
+	public String login () {
+		return "login";
+	}
 
 	/**
 	 * 登录
@@ -36,7 +41,7 @@ public class LoginController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public JSONObject login(HttpServletRequest request, HttpServletResponse response) {
 
 		try {

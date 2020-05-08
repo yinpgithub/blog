@@ -3,6 +3,7 @@ package cn.cn668.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -22,5 +23,12 @@ public interface ContentsDao {
 	 * @return
 	 */
 	public List<Contents> findContentss(JSONObject json);
+	
+	/**
+	 * 查询内容
+	 * @param object
+	 * @return
+	 */
+	public Contents findContents(JSONObject json);
 
 }

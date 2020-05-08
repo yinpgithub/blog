@@ -28,8 +28,18 @@ public class ContentsServiceImpl implements ContentsService {
 	 */
 	@Override
 	public List<Contents> findContentss(JSONObject json) {
-		// TODO Auto-generated method stub
 		return dao.findContentss(json);
+	}
+
+	@Override
+	public Contents findContents(JSONObject json) {
+		
+		String page = json.getString("page"); 
+		
+		//假设此处设置用id的风格查询页面
+		json.put("id",page);
+		
+		return dao.findContents(json);
 	}
 
 }

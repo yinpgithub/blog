@@ -6,5 +6,17 @@
     <select id="findContentss" resultType="cn.cn668.pojo.Contents">
         select id,title,userId,insertDt from contents
     </select>
+    
+    <!-- 查询内容 -->
+    <select id="findContents" resultType="cn.cn668.pojo.Contents">
+    	select * from contents
+		where 
+		<if test="id!=null and id !=''">
+			id = #{id}
+		</if>
+		<if test="alias!=null and alias !=''">
+			alias = #{alias}
+		</if>
+    </select>
  
 </mapper>
