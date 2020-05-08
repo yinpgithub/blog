@@ -33,7 +33,9 @@ public class ShiroConfig {
 		shiroFilterFactoryBean.setSuccessUrl("http://127.0.0.1/index.html");
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 		// <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-		filterChainDefinitionMap.put("/webjars/**", "anon");
+		filterChainDefinitionMap.put("/static/**", "anon");
+		filterChainDefinitionMap.put("/**.html", "anon");
+		
 		filterChainDefinitionMap.put("/login", "anon");
 		filterChainDefinitionMap.put("/", "anon");
 		filterChainDefinitionMap.put("/front/**", "anon");

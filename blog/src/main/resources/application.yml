@@ -2,10 +2,18 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://cn668.cn:3306/blog?characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://txy.cn668.cn:3306/blog?characterEncoding=utf8&useSSL=false
     username: blog
     password: 123456
-    
+  thymeleaf.prefix: classpath:/templates/
+  thymeleaf.suffix: .html
+  thymeleaf.mode: LEGACYHTML5
+  thymeleaf.servlet.content-type: text/html
+  thymeleaf.encoding: utf-8
+  thymeleaf.cache: false
+  resources.chain.strategy.content.enabled: true
+  resources.chain.strategy.content.paths: /**
+  
 #热部署
   thymeleaf: 
     cache: true
@@ -15,9 +23,15 @@ spring:
       additional-paths: src/main/java 
       
 #设置端口号
-server:  port: 8080
+server:  port: 80
   
 #配置mybatis
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
+  
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
