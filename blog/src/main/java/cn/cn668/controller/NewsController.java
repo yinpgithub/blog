@@ -46,7 +46,7 @@ public class NewsController {
 		return "news";
 	}
 
-	@RequestMapping("/")
+	@RequestMapping(value = {"/","index.html"})
 	public String index(HttpServletRequest request) {
 
 		JSONObject json = new JSONObject();

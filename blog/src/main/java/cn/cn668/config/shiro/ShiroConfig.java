@@ -28,7 +28,7 @@ public class ShiroConfig {
 	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(securityManager);
-		shiroFilterFactoryBean.setLoginUrl("/login.html");
+		shiroFilterFactoryBean.setLoginUrl("login.html");
 		shiroFilterFactoryBean.setUnauthorizedUrl("/notRole");
 		shiroFilterFactoryBean.setSuccessUrl("/admin/index.html");
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
