@@ -1,11 +1,12 @@
 <template>
   <div class="index">
-    这是首页
+    
   </div>
 </template>
 <style scoped>
   .index{
-    background-color: burlywood;
+    background-image: url(../assets/1.jpg);
+    background-size:100% 100%;
     margin: 0px;
     padding: 0px;
     height: 100%;

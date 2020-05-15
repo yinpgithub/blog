@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header>头</el-header>
+      <el-header>头部</el-header>
         <el-container>
           <el-aside width="200px">
-            <el-menu >
+            <el-menu>
               <el-submenu index="1">
                 <template slot="title"><i class="el-icon-s-tools"></i>设置</template>
                 <el-menu-item-group class=".el-menu-item-group">
                   <router-link to="/"><el-menu-item index="1-1">首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页</el-menu-item></router-link>
-                  <router-link to="/login"><el-menu-item index="1-2">用户管理</el-menu-item></router-link>
+                  <router-link to="/user"><el-menu-item index="1-2">用户管理</el-menu-item></router-link>
                 </el-menu-item-group>
               </el-submenu>
             </el-menu>
@@ -37,7 +37,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .el-header, .el-footer {
     background-color: #B2DFEE;
@@ -54,7 +53,7 @@ export default {
   }
   
   .el-main {
-    background-color: #C1FFC1;
+    background-color: #e6e6e6;
     color: #333;
     text-align: center;
     line-height: 160px;
@@ -79,6 +78,10 @@ export default {
 
   .el-menu-item-group a{
     text-decoration:none;
+  }
+
+  .el-menu{
+    height: 100%;
   }
 </style>
 <style>

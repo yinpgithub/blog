@@ -11,11 +11,13 @@ Vue.use(VueRouter)
 //1`创建组件
 import login from './views/login.vue'
 import index from './views/index.vue'
+import user from './views/user.vue'
 //2`配置路由
 const routes = [
   {path: '/login',component:login},
   {path: '/',component:index},
-  {path: '/index',component:index}
+  {path: '/index',component:index},
+  {path: '/user',component:user}
 ]
 //3`实例化vuerouter
 const router = new VueRouter({
