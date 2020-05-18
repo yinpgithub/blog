@@ -2,8 +2,8 @@
   <div id="login">
     <el-form ref="form" label-width="80px">
       <h1>这是登陆页</h1>
-      <el-input v-model="input" placeholder="用户名"></el-input>
-      <el-input v-model="input" placeholder="密码"></el-input>
+      <el-input v-model="userName" placeholder="用户名"></el-input>
+      <el-input type="password" v-model="password" placeholder="密码"></el-input>
       <el-button
       type="primary"
       @click="loginDo"
@@ -17,7 +17,8 @@
 export default {
   data() {
     return {
-      input: '',
+      userName: 'admin',
+      password:'123456',
       model:'',
       fullscreenLoading: false
     }
@@ -25,7 +26,10 @@ export default {
   methods:{
     loginDo(){
       this.fullscreenLoading = true;
-      this.$http.post('/api/login.do').then(response => {
+      this.$http.post('/api/login.do',{
+        userName:this.userName,
+        password:this.password
+      }).then(response => {
         this.fullscreenLoading = false;
         if(response.data.code==200){
           this.$message({
@@ -33,26 +37,24 @@ export default {
             type: 'success',
             center: true
           });
-        }else{
-          this.$message({
-            message:response.data.msg,
-            type: 'error',
-            center: true,
-          });
           this.$router.push({
             path: '/',
           })
+        }else{
+          this.$message({
+            message:response.data.result,
+            type: 'error',
+            center: true,
+          });
         }
       }).catch(error => {
+        this.fullscreenLoading = false;
         console.log(error);
         this.$message({
             message:'服务器内部错误',
             type: 'error',
             center: true,
           });
-        this.$router.push({
-            path: '/',
-          })
       }); 
     }
   }

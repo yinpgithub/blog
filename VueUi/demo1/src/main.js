@@ -19,6 +19,7 @@ import login from './views/login.vue'
 import home from './views/home.vue'
 import user from './views/user.vue'
 import index from './views/index.vue'
+import error from './views/error.vue'
 
 //2`配置路由
 const routes = [
@@ -26,7 +27,8 @@ const routes = [
     {path: '/home.html',component:home},
     {path: '/user.html',component:user}
   ]},
-  {path: '/login.html',component:login}
+  {path: '/login.html',component:login},
+  {path: '/error.html',component:error}
 ]
 //3`实例化vuerouter
 const router = new VueRouter({

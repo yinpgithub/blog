@@ -10,6 +10,7 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.cn668.dao.LoginDao;
+import cn.cn668.dao.UserDao;
 import cn.cn668.pojo.User;
 import cn.cn668.util.MD5;
 
@@ -20,14 +21,16 @@ public class CustomRealm extends AuthorizingRealm {
 	
 	@Autowired
 	LoginDao dao;
+	@Autowired
+	UserDao userDao;
 	
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-		String username = (String) SecurityUtils.getSubject().getPrincipal();
+		String userName = (String) SecurityUtils.getSubject().getPrincipal();
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		User user = userDao.findUser(userName);
 		Set<String> stringSet = new HashSet<>();
-		stringSet.add("user:show");
-		stringSet.add("user:admin");
+		stringSet.add(user.getRole().getRoleName());
 		info.setStringPermissions(stringSet);
 		return info;
 	}

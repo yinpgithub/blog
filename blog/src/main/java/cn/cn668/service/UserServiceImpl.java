@@ -1,5 +1,7 @@
 package cn.cn668.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,12 @@ public class UserServiceImpl implements UserService {
 	public User findUser(String userName) {
 		// TODO Auto-generated method stub
 		return dao.findUser(userName);
+	}
+
+	@Override
+	public List<User> findUserList() {
+		// TODO Auto-generated method stub
+		return dao.findUserList();
 	}
 
 }

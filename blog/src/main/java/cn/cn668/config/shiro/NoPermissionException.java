@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 
+import cn.cn668.RJson;
+
 
 /**
  * 配置无权限提示
@@ -21,17 +23,13 @@ public class NoPermissionException {
 
 	@ResponseBody
     @ExceptionHandler(UnauthorizedException.class)
-    public JSONObject handleShiroException(Exception ex) {
-        result.put("result", false);
-		result.put("msg", "无权限访问");
-		return result;
+    public RJson handleShiroException(Exception ex) {
+		return new RJson().error(403, "无权限访问");
     }
     @ResponseBody
     @ExceptionHandler(AuthorizationException.class)
-    public JSONObject AuthorizationException(Exception ex) {
-        result.put("result", false);
-		result.put("msg", "权限认证失败");
-		return result;
+    public RJson AuthorizationException(Exception ex) {
+		return new RJson().error(4844, "请先登录");
     }
 	
 }

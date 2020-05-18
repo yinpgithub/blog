@@ -21,56 +21,56 @@ public class NewsController {
 	@Autowired
 	ContentsService service;
 
-	@RequestMapping("new.html")
-	public String New() {
-		return "new";
-	}
+//	@RequestMapping("new.html")
+//	public String New() {
+//		return "new";
+//	}
 
-	@RequestMapping("{page}.html")
-	public String news(HttpServletRequest request,HttpServletResponse response, @PathVariable("page") String page) throws IOException {
+//	@RequestMapping("{page}.html")
+//	public String news(HttpServletRequest request,HttpServletResponse response, @PathVariable("page") String page) throws IOException {
+//
+//		response.setContentType("text/html;charset=utf-8");
+//		
+//		JSONObject json = new JSONObject();
+//		json.put("page", page);
+//
+//		Contents contents = service.findContents(json);
+//
+//		if (contents == null) {
+//			return "error/404";
+//
+//		}
+//
+//		request.setAttribute("contents", contents);
+//
+//		return "news";
+//	}
 
-		response.setContentType("text/html;charset=utf-8");
-		
-		JSONObject json = new JSONObject();
-		json.put("page", page);
+//	@RequestMapping(value = {"/","index.html"})
+//	public String index(HttpServletRequest request) {
+//
+//		JSONObject json = new JSONObject();
+//		json.put("pageNum", 1);
+//		json.put("pageSize", 10);
+//
+//		List<Contents> contentss = service.findContentss(json);
+//
+//		request.setAttribute("contentss", contentss);
+//
+//		return "index";
+//	}
 
-		Contents contents = service.findContents(json);
-
-		if (contents == null) {
-			return "error/404";
-
-		}
-
-		request.setAttribute("contents", contents);
-
-		return "news";
-	}
-
-	@RequestMapping(value = {"/","index.html"})
-	public String index(HttpServletRequest request) {
-
-		JSONObject json = new JSONObject();
-		json.put("pageNum", 1);
-		json.put("pageSize", 10);
-
-		List<Contents> contentss = service.findContentss(json);
-
-		request.setAttribute("contentss", contentss);
-
-		return "index";
-	}
-
-	@RequestMapping("/page/{pageNum}.html")
-	public String page(HttpServletRequest request, @PathVariable("pageNum") Integer pageNum) {
-
-		JSONObject json = new JSONObject();
-		json.put("pageNum", pageNum);
-		json.put("pageSize", 10);
-
-		List<Contents> contentss = service.findContentss(json);
-
-		request.setAttribute("contentss", contentss);
-
-		return "public/index/index";
-	}
+//	@RequestMapping("/page/{pageNum}.html")
+//	public String page(HttpServletRequest request, @PathVariable("pageNum") Integer pageNum) {
+//
+//		JSONObject json = new JSONObject();
+//		json.put("pageNum", pageNum);
+//		json.put("pageSize", 10);
+//
+//		List<Contents> contentss = service.findContentss(json);
+//
+//		request.setAttribute("contentss", contentss);
+//
+//		return "public/index/index";
+//	}
 }

@@ -1,5 +1,7 @@
 package cn.cn668.service;
 
+import java.util.List;
+
 import cn.cn668.pojo.User;
 
 /**
@@ -9,4 +11,5 @@ import cn.cn668.pojo.User;
  */
 public interface UserService {
 	User findUser(String userName);
+	List<User> findUserList();
 }

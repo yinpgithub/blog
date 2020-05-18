@@ -19,7 +19,7 @@
           </el-aside>
           <el-main><router-view></router-view></el-main>
         </el-container>
-      <el-footer>底部</el-footer>
+      <!-- <el-footer>底部</el-footer> -->
     </el-container>
   </div>
 </template>

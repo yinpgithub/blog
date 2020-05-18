@@ -1,21 +1,21 @@
 package cn.cn668.controller;
 
-import java.io.IOException;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-
+import cn.cn668.RJson;
 import cn.cn668.pojo.User;
 import cn.cn668.service.UserService;
-import cn.cn668.util.Equals;
 
 /**
  * 用户
@@ -33,18 +33,17 @@ public class UserController {
 	 * 通过userName查询user
 	 * @param request
 	 * @return
+	 * @throws InterruptedException 
 	 */
-	@RequiresPermissions("user:list")
-	@RequestMapping(value = "findUser",method = RequestMethod.POST)
-	public void findUser(HttpServletRequest request,HttpServletResponse response) {
-		
-		String userName = request.getParameter("userName");
-		
+	@RequiresPermissions(value = {"管理员","e794a8e688b7e7aea1e79086"},logical = Logical.OR)
+	@RequestMapping(value = "findUserList",method = RequestMethod.POST)
+	public RJson findUserList(HttpServletRequest request,HttpServletResponse response) throws InterruptedException {
+		Thread.sleep(500);
 		try {
-			User user = service.findUser(userName);
-			response.getWriter().append(user.toString());
+			List<User> user = service.findUserList();
+			return RJson.success(user);
 		} catch (Exception e) {
-			
+			return RJson.error(500,e.getMessage());
 		}
 	}
 

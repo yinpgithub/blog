@@ -23,8 +23,8 @@ public class RJson {
 		return new RJson(200,"请求成功",result);
 	}
 	
-	public static RJson error(String msg) {
-		return new RJson(500,msg,null);
+	public static RJson error(Integer code,String msg) {
+		return new RJson(code,msg,null);
 	}
 	
 	public Integer getCode() {

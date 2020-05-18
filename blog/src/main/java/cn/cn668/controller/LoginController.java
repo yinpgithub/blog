@@ -57,34 +57,27 @@ public class LoginController {
 
 		try {
 			Thread.sleep(1000);
-//			// 接收参数
-//			String str = IOUtils.toString(request.getInputStream(), request.getCharacterEncoding());
-//			response.setContentType("application/json");
-//			// 将接受到的字符串转换为json数组
-//			JSONObject json = JSONObject.parseObject(str);
-//
-//			String userName = json.getString("userName");
-//			if (!Equals.StringEqualsNull(userName)) {
-//				result.put("result", false);
-//				result.put("msg", "参数'userName'=" + userName + "无效");
-//				return result;
-//			}
-//			String password = json.getString("password");
-//			if (!Equals.StringEqualsNull(password)) {
-//				result.put("result", false);
-//				result.put("msg", "参数'password'=" + password + "无效");
-//				return result;
-//			}
-			
-			String userName = "admin";
-			String password = "123";
+			// 接收参数
+			String str = IOUtils.toString(request.getInputStream(), request.getCharacterEncoding());
+			response.setContentType("application/json");
+			// 将接受到的字符串转换为json数组
+			JSONObject json = JSONObject.parseObject(str);
+
+			String userName = json.getString("userName");
+			if (!Equals.StringEqualsNull(userName)) {
+				return new RJson().error(500,"参数'userName'=" + userName + "无效");
+			}
+			String password = json.getString("password");
+			if (!Equals.StringEqualsNull(password)) {
+				return new RJson().error(500,"参数'password'=" + password + "无效");
+			}
 			
 			String res = service.login(userName, password);
 			return new RJson().success(res);
 		} catch (Exception e) {
 			result.put("result", false);
 			result.put("msg", e.getMessage());
-			return new RJson().error(e.getMessage());
+			return new RJson().error(500,e.getMessage());
 		}
 	}
 
