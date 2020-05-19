@@ -1,5 +1,6 @@
 package cn.cn668.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -37,10 +38,10 @@ public class LoginController {
 
 	JSONObject result = new JSONObject();
 	
-	@RequestMapping("test")
-	public RJson login (@RequestParam String view) {
-		return RJson.success(view);
-	}
+//	@RequestMapping("test")
+//	public RJson login (@RequestParam String view) {
+//		return RJson.success(view);
+//	}
 	
 	
 
@@ -71,9 +72,7 @@ public class LoginController {
 			if (!Equals.StringEqualsNull(password)) {
 				return new RJson().error(500,"参数'password'=" + password + "无效");
 			}
-			
-			String res = service.login(userName, password);
-			return new RJson().success(res);
+			return service.login(userName, password);
 		} catch (Exception e) {
 			result.put("result", false);
 			result.put("msg", e.getMessage());

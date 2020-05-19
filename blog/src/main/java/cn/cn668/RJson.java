@@ -19,6 +19,10 @@ public class RJson {
 		this.result = result;
 	}
 	
+	public static RJson success(String msg,Object result) {
+		return new RJson(200,msg,result);
+	}
+	
 	public static RJson success(Object result) {
 		return new RJson(200,"请求成功",result);
 	}

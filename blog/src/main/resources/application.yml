@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://txy.cn668.cn:3306/blog?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://nps.cn668.cn:13306/blog?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: blog
-    password: 123456
+    password: 15594284
   thymeleaf.prefix: classpath:/templates/
   thymeleaf.suffix: .html
   thymeleaf.mode: LEGACYHTML5

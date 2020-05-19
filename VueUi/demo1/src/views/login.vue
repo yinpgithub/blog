@@ -3,87 +3,97 @@
     <el-form ref="form" label-width="80px">
       <h1>这是登陆页</h1>
       <el-input v-model="userName" placeholder="用户名"></el-input>
-      <el-input type="password" v-model="password" placeholder="密码"></el-input>
+      <el-input
+        type="password"
+        v-model="password"
+        placeholder="密码"
+      ></el-input>
       <el-button
-      type="primary"
-      @click="loginDo"
-      v-loading.fullscreen.lock="fullscreenLoading">
-      登陆
-    </el-button>
-  </el-form>
+        type="primary"
+        @click="loginDo"
+        v-loading.fullscreen.lock="fullscreenLoading"
+      >
+        登陆
+      </el-button>
+    </el-form>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      userName: 'admin',
-      password:'123456',
-      model:'',
-      fullscreenLoading: false
-    }
+      userName: "admin",
+      password: "123456",
+      model: "",
+      fullscreenLoading: false,
+    };
   },
-  methods:{
-    loginDo(){
+  methods: {
+    loginDo() {
       this.fullscreenLoading = true;
-      this.$http.post('/api/login.do',{
-        userName:this.userName,
-        password:this.password
-      }).then(response => {
-        this.fullscreenLoading = false;
-        if(response.data.code==200){
+      this.$http
+        .post("/api/login.do", {
+          userName: this.userName,
+          password: this.password,
+        })
+        .then((response) => {
+          this.fullscreenLoading = false;
+          if (response.data.code == 200) {
+            this.$Cookies.set("token", response.data.result);
+            this.$Cookies.set("userName", this.userName);
+            this.$message({
+              message: response.data.msg,
+              type: "success",
+              center: true,
+            });
+            this.$router.push({
+              path: "/admin/",
+            });
+          } else {
+            this.$message({
+              message: response.data.msg,
+              type: "error",
+              center: true,
+            });
+          }
+        })
+        .catch((error) => {
+          this.fullscreenLoading = false;
+          console.log(error);
           this.$message({
-            message: response.data.result,
-            type: 'success',
-            center: true
-          });
-          this.$router.push({
-            path: '/',
-          })
-        }else{
-          this.$message({
-            message:response.data.result,
-            type: 'error',
+            message: "服务器内部错误",
+            type: "error",
             center: true,
           });
-        }
-      }).catch(error => {
-        this.fullscreenLoading = false;
-        console.log(error);
-        this.$message({
-            message:'服务器内部错误',
-            type: 'error',
-            center: true,
-          });
-      }); 
-    }
-  }
-}
+        });
+    },
+  },
+  mounted() {
+    this.$Cookies.remove("token");
+    this.$Cookies.remove("userName");
+  },
+};
 </script>
 <style scoped>
-    .login{
-      background-image: url(../assets/1.jpg);
-      background-size:100% 100%;
-      margin: 0px;
-      padding: 0px;
-      height: 100%;
-    }
-    .el-form{
-      width: 400px;
-      height: 400px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      text-align: center;
-    }
-    .el-input{
-      margin: 10px;
-    }
-    .el-button{
-     
-      width: 200px;
-    }
+.login {
+  background-image: url(../assets/1.jpg);
+  background-size: 100% 100%;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+.el-form {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+}
+.el-input {
+  margin: 10px;
+}
 </style>

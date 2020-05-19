@@ -1,10 +1,12 @@
 package cn.cn668.service;
 
+import cn.cn668.RJson;
+
 /**
  * 登录
  * @author YinP
  *
  */
 public interface LoginService {
-	String login(String userName,String password);
+	RJson login(String userName,String password);
 }
